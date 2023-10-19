@@ -22,7 +22,7 @@ def generate_quiz(text):
     quiz_type = ['multiple choices']
     num_questions = 5
 
-    client.send_chat_break('chinchilla')
+    client.send_chat_break('llama_2_70b_chat')
     all_responses = ""
     for i in range(0, len(text), step_size):
         request = text[i: i + chunk_size]
@@ -33,7 +33,7 @@ def generate_quiz(text):
         request += f'Make ' \
                    f'{quiz_type[0]}' \
                    f'quiz out of this. Show questions then the answers.'
-        for chunk in client.send_message('chinchilla', request):
+        for chunk in client.send_message('llama_2_70b_chat', request):
             pass
             response = chunk['text']
         all_responses += response
